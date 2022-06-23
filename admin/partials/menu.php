@@ -1,3 +1,5 @@
+<?php include('../config/constrains.php');?>
+
 <html>
     <head>
         <title>Yummie Japanese Food || Home</title>

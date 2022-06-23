@@ -22,6 +22,52 @@ body{
     clear: both;
 }
 
+.tbl-full{
+    width: 100%;
+    color: #FCDAB7;
+}
+.tbl-30{
+    width:30%;
+    color: #FCDAB7;
+}
+
+table tr th{
+    border-bottom: 1px solid #FCDAB7;
+    padding:1%;
+    text-align:left;
+}
+table tr td{
+    padding:1%; 
+}
+.btn-primary{
+    background-color:#2d72a0;
+    padding:1%;
+    color:black;
+}
+.btn-primary:hover{
+    background-color:#B1D0E0
+}
+.btn-secondary{
+    background-color:#16C79A;
+    padding:1%;
+    color:black;
+
+}
+.btn-secondary:hover{
+    background-color:#58B368; 
+}
+
+.btn-danger{
+    background-color:#FF6B6B;
+    padding:1%;
+    color:black;
+
+}
+.btn-danger:hover{
+    background-color:#B61919; 
+}
+
+
 /* Menu css */
 .menu{
     text-align: center;
