@@ -13,6 +13,15 @@
                 <h1>Manage Admin</h1>
                 <br>
 
+                <?php
+                    if(isset($_SESSION['add']))
+                    {
+                        echo $_SESSION['add']; //Diplay season message
+                        unset($_SESSION['add']); //remove season message
+                    }
+                ?>
+
+                <br><br>
                 <!--button add admin-->
                 <a href="add-admin.php" class="btn-primary">Add Admin</a>
                 <br> <br> <br>
@@ -25,46 +34,55 @@
                         <th>Actions</th>
                     </tr>
 
-                    <tr>
-                        <td>1</td>
-                        <td>Fajar Triady Putra</td>
-                        <td>fajartriadyp</td>
-                        <td>
-                           <a href="#"class="btn-secondary">Update</a> 
-                           <a href="#"class="btn-danger">Delete</a> 
-                        </td>
-                    </tr>
+                    <?php
+                        //Query to get all admin
+                        $sql = "SELECT * FROM admin";
+                        //excute query
+                        $res = mysqli_query($conn, $sql);
 
-                    <tr>
-                        <td>2</td>
-                        <td>Fajar Triady Putra</td>
-                        <td>fajartriadyp</td>
-                        <td>
-                           <a href="#"class="btn-secondary">Update</a> 
-                           <a href="#"class="btn-danger">Delete</a> 
-                        </td>
-                    </tr>
+                        //check the query is executed successfully
+                        if($res=TRUE)
+                        {
+                            //count row
+                            $count = mysqli_num_rows($res); //to get all the rows
 
-                    <tr>
-                        <td>3</td>
-                        <td>Fajar Triady Putra</td>
-                        <td>fajartriadyp</td>
-                        <td>
-                           <a href="#"class="btn-secondary">Update</a> 
-                           <a href="#"class="btn-danger">Delete</a> 
-                        </td>
-                    </tr>
+                            //check the num of rows returned
+                            if($count>0)
+                            {
+                                //data in database
+                                while($rows = mysqli_fetch_assoc($res));
+                                {
+                                    //using while loop to get all the data in database
+                                    //will run as long have data in database
 
-                    <tr>
-                        <td>4</td>
-                        <td>Fajar Triady Putra</td>
-                        <td>fajartriadyp</td>
-                        <td>
-                            <a href="#"class="btn-secondary">Update</a> 
-                            <a href="#"class="btn-danger">Delete</a> 
-                        </td>
-                    </tr>
+                                    //get individual data
+                                    $id=$rows['id'];
+                                    $full_name=$rows['full_name'];
+                                    $user_id=$rows['username'];
 
+                                    //display value on table
+                    ?>
+                                        <tr>
+                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $full_name; ?></td>
+                                            <td><?php echo $username; ?></td>
+                                            <td>
+                                            <a href="#"class="btn-secondary">Update</a> 
+                                            <a href="#"class="btn-danger">Delete</a> 
+                                            </td>
+                                        </tr>                                         
+
+                                    <?php 
+
+                                    
+                                }
+                            }
+                            else
+                            {
+                                //dont have data in database
+                            }
+                        }
+                    ?>
 
                 </table>
 

@@ -6,6 +6,16 @@
         <h1>Add Admin</h1>
 
         <br><br>
+        <?php
+            if(isset($_SESSION['add'])) //checking the season
+            {
+                echo $_SESSION['add'];//Diplay season message
+                unset($_SESSION['add']);//Remove season message
+            }
+        
+        ?>
+
+
 
         <form action="" method="POST" >
             <table class="tbl-30">
@@ -64,13 +74,27 @@
         ";
 
         //3.Excute Query dan save ke database
- 
+        $res = mysqli_query($conn, $sql);
 
-        $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        //4, Mengecek data masuk atau tidak
+        if($res==true)
+        {
+            //data masuk
+            //a season variable to display message
+            $_SESSION['add'] = "Admin Added Successfully";
+            //redirect to admin page
+            header("Location:".SITEURL. 'admin/admin.php');
+            
+        }
+        else
+        {
+            //a season variable to display message
+            $_SESSION['add'] = "Failed Added Successfully";
+            //redirect to add-admin page
+            header("Location:".SITEURL. 'admin/add-admin.php');
+            
+        }
 
     }
-    else
-    {
-        
-    }
+
 ?>
